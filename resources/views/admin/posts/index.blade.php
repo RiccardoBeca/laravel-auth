@@ -18,7 +18,12 @@
                     <tr>
                         <th scope="row">{{ $post->id }}</th>
                         <td>{{ $post->title }}</td>
-                        <td>Buttons</td>
+                        <td>
+                            <a class="btn btn-primary" href="#">Show</a>
+                            <a class="btn btn-success" href="#">Edit</a>
+                            <a class="btn btn-danger" href="#">Delete</a>
+
+                        </td>
                     </tr>
                 @endforeach
 
