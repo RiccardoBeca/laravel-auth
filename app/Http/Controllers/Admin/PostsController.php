@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PostRequest;
 use Illuminate\Http\Request;
 use App\Post;
 
@@ -28,7 +29,7 @@ class PostsController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.posts.create');
     }
 
     /**
@@ -37,9 +38,18 @@ class PostsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PostRequest $request)
     {
-        //
+        $data = $request->all();
+        $new_post = new Post();
+        // visto che nel form create non posso inserire lo slug lo genero utilizzando la funzione generateSlug che importo dal Model
+        $data['slug'] = Post::generateSlug($data['title']);
+        $new_post->fill($data);
+        $new_post->save();
+        return redirect()->route('admin.posts.show', $new_post);
+        
+
+        // dd($new_post);
     }
 
     /**
@@ -49,8 +59,8 @@ class PostsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
-        //
+    {      $post = Post::find($id);
+           return view('admin.posts.show', compact('post'));                 
     }
 
     /**

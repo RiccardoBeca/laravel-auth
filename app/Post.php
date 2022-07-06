@@ -6,6 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 class Post extends Model
 {
+
+    protected $fillable = [
+
+        'title',
+        'slug',
+        'content'
+
+    ];
+
     public static function generateSlug($title){
         $slug = Str::slug($title, '-');
         $slug_base = $slug;
