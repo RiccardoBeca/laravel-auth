@@ -21,7 +21,15 @@
                         <td>
                             <a class="btn btn-primary" href="{{ route('admin.posts.show', $post) }}">Show</a>
                             <a class="btn btn-success" href="{{ route('admin.posts.edit', $post) }}">Edit</a>
-                            <a class="btn btn-danger" href="#">Delete</a>
+                            <form 
+                            action="{{ route('admin.posts.destroy', $post) }}"
+                            method="post">
+                            @csrf
+                            @method('DELETE')
+
+
+                            <input class="mt-3" type="submit" value="Delete">
+                            </form>
                         </td>
                     </tr>
                 @endforeach
