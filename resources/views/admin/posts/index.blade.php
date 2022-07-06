@@ -20,7 +20,7 @@
                         <td>{{ $post->title }}</td>
                         <td>
                             <a class="btn btn-primary" href="{{ route('admin.posts.show', $post) }}">Show</a>
-                            <a class="btn btn-success" href="#">Edit</a>
+                            <a class="btn btn-success" href="{{ route('admin.posts.edit', $post) }}">Edit</a>
                             <a class="btn btn-danger" href="#">Delete</a>
                         </td>
                     </tr>
